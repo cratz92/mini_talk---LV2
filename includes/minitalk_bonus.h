@@ -6,7 +6,7 @@
 /*   By: cbrito-l <cbrito-l@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/13 12:07:07 by cbrito-l          #+#    #+#             */
-/*   Updated: 2021/12/17 21:11:15 by cbrito-l         ###   ########.fr       */
+/*   Updated: 2021/12/17 21:35:03 by cbrito-l         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <sys/wait.h>
 # include <stdbool.h>
-# include "../libft/libft.h"
+# include "../_libft/libft.h"
 
 # define DELAY_IN_MS 200
 

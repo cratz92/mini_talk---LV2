@@ -6,15 +6,15 @@
 #    By: cbrito-l <cbrito-l@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/17 14:32:21 by cbrito-l          #+#    #+#              #
-#    Updated: 2021/12/17 21:21:03 by cbrito-l         ###   ########.fr        #
+#    Updated: 2021/12/17 21:45:18 by cbrito-l         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_CLIENT = client
 NAME_SERVER = server
 
-NAME_CLIENT_BONUS = client
-NAME_SERVER_BONUS = server
+NAME_CLIENT_BONUS = client_bonus
+NAME_SERVER_BONUS = server_bonus
 
 SRCS_DIR = srcs/
 INC_DIR = includes/
@@ -52,40 +52,40 @@ INC_PARAMS = $(INC:%=-I%)
 
 CFLAGS = -Wall -Wextra -Werror $(INC_PARAMS)
 
-LIBFT = Libft/libft.a
+LIBFT = _Libft/libft.a
 
 
 all: $(NAME_CLIENT) $(NAME_SERVER)
 
 $(NAME_CLIENT): $(OBJS_CLIENT)
-	$(MAKE) -C Libft
+	$(MAKE) -C _Libft
 	$(CC) $(CFLAGS) $(OBJS_CLIENT) $(LIBFT) -o $(NAME_CLIENT)
 
 $(NAME_SERVER): $(OBJS_SERVER)
-	$(MAKE) -C Libft
+	$(MAKE) -C _Libft
 	$(CC) $(CFLAGS) $(OBJS_SERVER) $(LIBFT) -o $(NAME_SERVER)
 
-all_bonus: $(NAME_CLIENT_BONUS) $(NAME_SERVER_BONUS)
+
+bonus: $(NAME_CLIENT_BONUS) $(NAME_SERVER_BONUS)
 
 $(NAME_CLIENT_BONUS): $(OBJS_CLIENT_BONUS)
-	$(MAKE) -C Libft
+	$(MAKE) -C _Libft
 	$(CC) $(CFLAGS) $(OBJS_CLIENT_BONUS) $(LIBFT) -o $(NAME_CLIENT_BONUS)
 
 $(NAME_SERVER_BONUS): $(OBJS_SERVER_BONUS)
-	$(MAKE) -C Libft
+	$(MAKE) -C _Libft
 	$(CC) $(CFLAGS) $(OBJS_SERVER_BONUS) $(LIBFT) -o $(NAME_SERVER_BONUS)
 
-bonus: fclean all_bonus
 
 debug: CFLAGS += -fsanitize=address -g
 debug: fclean all
 
 clean:
-	$(RM) $(OBJS_CLIENT) $(OBJS_SERVER)
-	$(MAKE) -C Libft clean
+	$(RM) $(OBJS_CLIENT) $(OBJS_SERVER) $(OBJS_CLIENT_BONUS) $(OBJS_SERVER_BONUS)
+	$(MAKE) -C _Libft clean
 
 fclean: clean
-	$(RM) $(NAME_CLIENT) $(NAME_SERVER) $(LIBFT)
+	$(RM) $(NAME_CLIENT) $(NAME_SERVER) $(LIBFT) $(NAME_CLIENT_BONUS) $(NAME_SERVER_BONUS)
 
 re: fclean all
 
